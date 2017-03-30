@@ -4,6 +4,18 @@ var Product = require('../../database-mongo/models/Product');
 
 module.exports = {
 
+  allWines: () => {
+    return Product.find({}, (err, results) => {
+      return new Promise((resolve, reject) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(results);
+        }
+      })
+    })
+  },
+
   searchWines: function(query, price, callback){
     console.log('searching', query);
     console.log('searching', price);
