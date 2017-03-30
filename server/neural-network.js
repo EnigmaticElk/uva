@@ -1,4 +1,4 @@
-var synaptic = require("synaptic");
+const synaptic = require("synaptic");
 
 module.exports.newUserNN = () => {
   return new synaptic.Architect.Perceptron(6, 3, 1);
