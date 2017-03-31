@@ -57,7 +57,6 @@ app.get('/login/facebook',
 
 app.get('/login/facebook/callback', 
   passport.authenticate('facebook', { failureRedirect: '/login',
-    // session: false,
     successRedirect: '/'
   })
 );
