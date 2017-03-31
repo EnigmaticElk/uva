@@ -21,7 +21,18 @@ module.exports.init = function(req, res) {
           res.send(error)
         } else {
           wines.top10Whites = topWhites;
-          res.send(wines);
+          NNUtils.recommendations('Tyler Arbus')
+            .then((recommendations) => {
+              wines.topRated = recommendations.map((wine) => {
+                return wine.details;
+              }).filter((wine, i) => {
+                return i < 10;
+              })
+              res.send(wines);
+            })
+            .catch((err) => {
+              res.send(err);
+            })
         }
       });
     }

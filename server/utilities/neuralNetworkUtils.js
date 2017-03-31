@@ -4,7 +4,7 @@ const User = require('../models/user.js');
 const synaptic = require("synaptic");
 
 const convertWinetoNeuron = (wine) => {
-  let obj = {id: wine._id};
+  let obj = {details: wine};
   let type = wine.redORwhite === 'Red Wines' ? 1 : 0;
   let price = wine.priceMin / 100;
   let cab = wine.type === 'Cabernet Sauvignon' ? 1 : 0;
@@ -30,19 +30,21 @@ module.exports.recommendations = (username) => {
             profile = synaptic.Network.fromJSON(user[0].recommendation_profile);
           }
           recommendations = wines.map((wine) => {
-            let obj = {id: wine.id};
+            let obj = {details: wine.details};
             obj.rating = profile.activate(wine.neurons)[0];
             return obj;
           })
-          return recommendations;
+          return recommendations.sort((a, b) => {
+            return b.rating - a.rating;
+          });
         })
     })
 }
 
-module.exports.recommendations('Tyler Arbus')
-  .then((queries) => {
-    console.log(queries);
-  })
-  .catch((err) => {
-    console.error(err);
-  })
+// module.exports.recommendations('Tyler Arbus')
+//   .then((queries) => {
+//     console.log(queries);
+//   })
+//   .catch((err) => {
+//     console.error(err);
+//   })
