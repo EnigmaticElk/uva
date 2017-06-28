@@ -4,10 +4,10 @@ Uva
 
 ## Team
 
-  - Johnny Chen
-  - Mike Burton
-  - Kevin Huang
-  - Preda Wen
+  - Benicio Peinado
+  - Dylan Shelters
+  - Tyler Arbus
+  - Jon Choi
 
 ## Table of Contents
 
