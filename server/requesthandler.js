@@ -181,6 +181,7 @@ module.exports.likes = (req, res) => {
 }
 
 module.exports.train = function(req, res) {
+  console.log('req.body in train', req.body);
   const trainingData = NNUtils.transformQuestResultsToTrainingData(req.body);
   return User.findUser(req.user)
     .then((user) => {

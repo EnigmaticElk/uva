@@ -54,7 +54,6 @@ class App extends React.Component {
     this.init = this.init.bind(this);
     this.handleUserWantsProductList = this.handleUserWantsProductList.bind(this);
     this.handleClickedProductEntry = this.handleClickedProductEntry.bind(this);
-    this.mapWinesIntoArray = this.mapWinesIntoArray.bind(this);
     this.postLike = this.postLike.bind(this);
     this.handleClickedNavItem = this.handleClickedNavItem.bind(this);
   }
@@ -222,14 +221,6 @@ class App extends React.Component {
     this.setState(selection);
   }
 
-  mapWinesIntoArray () {
-    const results = [];
-    for (const wineType in this.state.allWines) {
-      results.push(this.state.allWines[wineType]);
-    }
-    return results;
-  }
-
   render () {
 
     const wineRoutes = Object.values(this.state.allWines);
@@ -304,8 +295,8 @@ class App extends React.Component {
               <hr/>
             </div>
             <div>
+              <Route path='/questionnaire' component={Questionnaire}/>
               <Route exact path='/' component={Homepage}/>
-              <Route exact path='/questionnaire' component={Questionnaire}/>
               <Route path='/products' component={Products}/>
               <Route path='/product/overview' component={ProductOverviewComp}/>
               {wineRoutes.map((route, index) => (
